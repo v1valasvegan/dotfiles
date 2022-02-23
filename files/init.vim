@@ -1,11 +1,5 @@
 let mapleader = "\<Space>"
 
-" auto install vim-plug and plugins
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
 " https://github.com/chrisbra/matchit
 :packadd! matchit
 
@@ -13,22 +7,26 @@ endif
 set cc
 set signcolumn=yes
 set nowrap
-set relativenumber
 set nu
 set incsearch
 set nohls
 set scrolloff=7
 set colorcolumn=110
 set background=light
-set termguicolors     " enable true colors support for ayu
 vnoremap J :m '>+1<CR>gv-gv
 vnoremap K :m '<-2<CR>gv-gv
 
 " my own
 nnoremap <leader>h :History<CR>
+nnoremap <leader>sv :Vex<CR>
+nnoremap <leader>sh :Sex<CR>
+nnoremap <leader>sx <C-w>o
 
 call plug#begin('~/.vim/plugged')
-Plug 'gruvbox-community/gruvbox'
+" You have to install gruvbox to not upset the Primeagen Himself even if you're not planning to use it
+" Otherwise just go pay your 50$ bucks to Jerk Brains and use their Ikea or whatever is the name of that IDE,
+" they say they have a cool autocompletion there, I'm sure you'll love it. And let's pretend we don't know
+" each other, that'll be better for both of us.
 Plug 'ayu-theme/ayu-vim'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "" MUST BE
@@ -80,7 +78,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'windwp/nvim-spectre'
 Plug 'tpope/vim-bundler'
-Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'ekalinin/Dockerfile.vim'
 let g:coc_global_extensions = [
 \ 'coc-cspell-dicts',
@@ -114,8 +111,9 @@ filetype plugin on
 " https://github.com/vim/vim/blob/master/runtime/doc/russian.txt
 " Enable hotkeys for Russian layout
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
-silent! colorscheme ayu
+set termguicolors     " enable true colors support for ayu
 let ayucolor="light"
+colorscheme ayu
 if has('mouse')
 set mouse=a
 endif
@@ -149,6 +147,8 @@ map <leader>vr :source $MYVIMRC<CR>
 vmap gcc <plug>NERDCommenterToggle
 nmap gcc <plug>NERDCommenterToggle
 let g:NERDDefaultAlign = 'left'
+let NERDTreeShowHidden=1
+let NERDTreeHighlightCursorline = 0
 let g:NERDSpaceDelims = 1
 " https://github.com/tpope/vim-endwise/issues/11
 execute "inoremap {<CR> {<CR>}<ESC>O"
@@ -170,9 +170,10 @@ nmap     <leader>fr <Plug>CtrlSFPrompt
 nnoremap <leader>S :lua require('spectre').open()<CR>
 "set spell spelllang=en_us,ru_ru
 source ~/dotfiles/files/vim-configs/ale.vim
-sourc ~/dotfiles/files/vim-configs/coc.vim
+source ~/dotfiles/files/vim-configs/coc.vim
 source ~/dotfiles/files/vim-configs/fzf.vim
 source ~/dotfiles/files/vim-configs/nerdtree.vim
 source ~/dotfiles/files/vim-configs/coc-fzf.vim
 source ~/dotfiles/files/vim-configs/coc-plugins.vim
 source ~/dotfiles/files/vim-configs/test.vim
+source ~/dotfiles/files/vim-configs/fugitive.vim
