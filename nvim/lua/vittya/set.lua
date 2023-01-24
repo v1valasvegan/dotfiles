@@ -16,6 +16,8 @@ vim.opt.undofile = true
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
@@ -27,4 +29,4 @@ vim.opt.colorcolumn = "100"
 vim.g.mapleader = " "
 
 -- transparent sign column
-vim.api.nvim_set_hl(0, 'SignColumn', { bg = "none" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
