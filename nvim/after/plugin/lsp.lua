@@ -1,10 +1,13 @@
 local lsp = require("lsp-zero")
-local nvim_lsp = require("lspconfig")
 local null_ls = require("null-ls")
 
 lsp.preset("recommended")
 
-lsp.nvim_workspace()
+-- don't map 'gr' to lsp references to avoid conflicts, it's mapped to telescope references
+lsp.set_preferences({
+	set_lsp_keymaps = { omit = { "gr" } },
+})
+
 lsp.setup()
 
 -- https://github.com/VonHeikemen/lsp-zero.nvim/issues/60#issuecomment-1347277784
@@ -42,7 +45,6 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	-- vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts) - this is remapped for Telescope in remap.lua
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, bufopts)

@@ -39,11 +39,12 @@ keymap.set("n", "<C-n>", ":NvimTreeFindFile <CR>")
 -- move and add lines
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-keymap.set("n", "]<leader>", ':<C-u>put =repeat(nr2char(10),v:count)<Bar>execute "\'[-1"<CR>')
-keymap.set("n", "[<leader>", ':<C-u>put!=repeat(nr2char(10),v:count)<Bar>execute "\']+1"<CR>')
+keymap.set("n", "[<leader>", ':<C-u>put =repeat(nr2char(10),v:count)<Bar>execute "\'[-1"<CR>')
+keymap.set("n", "]<leader>", ':<C-u>put!=repeat(nr2char(10),v:count)<Bar>execute "\']+1"<CR>')
 
 -- use telescope picker to display references instead of native lsp qlist
-keymap.set("n", "gr", ":Telescope lsp_references")
+keymap.set("n", "gR", ":Telescope lsp_references<CR>")
+keymap.set("n", "gr", ":Telescope lsp_references<CR>")
 
 -- misc from ThePrimeagen --
 
@@ -51,8 +52,8 @@ keymap.set("n", "gr", ":Telescope lsp_references")
 keymap.set("n", "J", "mzJ`z")
 keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "<C-d>", "<C-d>zz")
-keymap.set("n", "n", "Nzzzv")
-keymap.set("n", "N", "Nzzzv")
+-- keymap.set("n", "n", "Nzzzv")
+-- keymap.set("n", "N", "Nzzzv")
 
 -- copy/paste
 keymap.set("x", "<leader>p", '"_dP') -- keep buffer when pasting
