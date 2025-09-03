@@ -1,0 +1,17 @@
+{
+  "name": "tree-sitter-gcc",
+  "version": "1.0.0",
+  "description": "gcc parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "vittya",
+  "license": "ISC",
+  "dependencies": {
+    "nan": "^2.20.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.22.6"
+  }
+}
